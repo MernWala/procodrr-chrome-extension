@@ -103,12 +103,17 @@ class Shortcuts {
   KeyI(e) {
     document.querySelector(".bmpui-ui-piptogglebutton").click();
   }
-  KeyF() {
-    document.querySelector(".bmpui-ui-fullscreentogglebutton").click();
+  KeyF(e) {
+    // Redirecting to toggleFullScreen function
+    toggleFullScreen(e);
   }
   KeyM() {
     const video = this.video;
     video.muted = !video.muted;
+  }
+  F11(e) {
+    // Redirecting to toggleFullScreen function
+    toggleFullScreen(e);
   }
 }
 
@@ -208,25 +213,9 @@ observer.observe(targetNode, {
   subtree: true,
 });
 
-function toggleFullScreen() {
-  const videoElement = document.querySelector("video");
-
-  if (document.fullscreenElement) {
-    // Exit fullscreen mode
-    document.exitFullscreen();
-  } else {
-    // Enter fullscreen mode
-    if (videoElement.requestFullscreen) {
-      videoElement.requestFullscreen();
-    } else if (videoElement.mozRequestFullScreen) {
-      // Firefox
-      videoElement.mozRequestFullScreen();
-    } else if (videoElement.webkitRequestFullscreen) {
-      // Chrome, Safari and Opera
-      videoElement.webkitRequestFullscreen();
-    } else if (videoElement.msRequestFullscreen) {
-      // IE/Edge
-      videoElement.msRequestFullscreen();
-    }
-  }
+function toggleFullScreen(event) {
+  // Preventing default behaviour of F11 button
+  event.preventDefault()
+  // Previous implementation of toggling fullscreen
+  document.querySelector(".bmpui-ui-fullscreentogglebutton").click();
 }
