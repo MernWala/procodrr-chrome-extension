@@ -16,6 +16,7 @@ This Chrome extension enhances the video player at [app.procodrr.com](https://ap
   - **L**: Disable dark mode. (Coming Soon)
   - **I**: Toggle picture-in-picture mode.
   - **F**: Toggle fullscreen mode.
+  - **F11**: Toggle fullscreen mode.
   - **M**: Mute/Unmute the video.
 
 - **Persistent Playback Speed**: Keeps your preferred playback speed across videos.
