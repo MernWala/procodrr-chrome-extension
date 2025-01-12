@@ -95,10 +95,10 @@ class Shortcuts {
     }
   }
   KeyD(e) {
-    document.body.classList.add("dark");
+    toggleTheme(e)
   }
   KeyL(e) {
-    document.body.classList.remove("dark");
+    toggleTheme(e)
   }
   KeyI(e) {
     document.querySelector(".bmpui-ui-piptogglebutton").click();
@@ -219,3 +219,23 @@ function toggleFullScreen(event) {
   // Previous implementation of toggling fullscreen
   document.querySelector(".bmpui-ui-fullscreentogglebutton").click();
 }
+
+function toggleTheme(event) {
+  const darkThemeLinkId = 'dark-theme-stylesheet';
+  const existingLink = document.getElementById(darkThemeLinkId);
+
+  if (existingLink) {
+    // If the dark theme is already applied, remove the stylesheet
+    existingLink.parentNode.removeChild(existingLink);
+  } else {
+    // If the dark theme is not applied, create and append the stylesheet link
+    const link = document.createElement('link');
+    link.id = darkThemeLinkId;
+    link.rel = 'stylesheet';
+    link.href = chrome.runtime.getURL('dark.css');
+    document.head.appendChild(link);
+  }
+}
+
+// calling function for default dark mode
+toggleTheme()
