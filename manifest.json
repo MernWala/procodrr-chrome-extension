@@ -4,9 +4,6 @@
   "description": "Customize YouTube pages by hiding specific elements.",
   "version": "1.0",
   "permissions": ["activeTab", "storage"],
-  "background": {
-    "service_worker": "background.js"
-  },
   "action": {
     "default_popup": "procodrr.html",
     "default_icon": {
@@ -18,9 +15,14 @@
   },
   "content_scripts": [
     {
+      "matches": ["https://app.procodrr.com/web/courses/*"],
+      "exclude_matches": [
+        "https://app.procodrr.com/web/courses",
+        "https://app.procodrr.com/web/activity",
+        "https://app.procodrr.com/web/courses/edit/*"
+      ],
       "css": ["content.css"],
       "js": ["content.js"],
-      "matches": ["https://app.procodrr.com/*"],
       "run_at": "document_end"
     }
   ],

@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "parcel build manifest.json procodrr.html content.css dark.css content.js --dist-dir dist --no-source-maps --no-cache && copy manifest.json dist\\",
+    "dev": "web-ext run --target=chromium"
+  },
+  "dependencies": {
+    "parcel": "^2.12.0"
+  }
+}
